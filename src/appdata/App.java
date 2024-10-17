@@ -2,6 +2,8 @@ package appdata;
 
 import java.util.*;
 import java.util.stream.Collectors;
+import  java.time.LocalDate;
+import java.time.*;
 
 public class App {
 
@@ -62,6 +64,35 @@ public class App {
         // filterProducts.forEach(prod -> {
         //     System.out.println(prod);
         // });
+        System.out.println("\n");
+
+        LocalDate ld = LocalDate.of(1990, 1, 12);
+        Date currentDate = Date.from(ld.atStartOfDay(ZoneId.systemDefault()).toInstant());
+        List<Person> persons = new LinkedList<>();
+        persons.add(new Person(1L, "Bernard", "Tan", 30000.0, currentDate));
+        persons.add(new Person(1L, "Chris", "Tan", 20000.0, currentDate));
+        persons.add(new Person(1L, "Dennis", "Wong", 15000.0, currentDate));
+        persons.add(new Person(1L, "Thomas", "Chia", 5000.0, currentDate));
+        persons.add(new Person(1L, "Rick", "Ng", 35000.0, currentDate));
+        persons.add(new Person(1L, "Micheal", "Choy", 12000.0, currentDate));
+        persons.add(new Person(1L, "Darren", "Loh", 32000.0, currentDate));
+        persons.add(new Person(1L, "May", "Tan", 20000.0, currentDate));
+
+        Comparator<Person> compare = Comparator.comparing(p -> p.getFirstName());
+        persons.sort(compare);
+        persons.forEach(p -> {
+            System.out.println(p.toString());
+        });
+
+        System.out.println("\n");
+
+        //Sort all the similar firstname together, then sort all the ppl with both similar firstname and lastname together
+        Comparator<Person> compareMultiple = Comparator.comparing(Person::getFirstName).thenComparing(Person::getLastName);
+        persons.sort(compareMultiple);
+        persons.forEach(p -> {
+            System.out.println(p.toString());
+        });
+
 
     }
 }
