@@ -2,6 +2,9 @@ package workshop4;
 
 import java.io.*;
 import java.net.*;
+import java.util.*;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class Server {
     
@@ -36,49 +39,55 @@ public class Server {
         System.out.printf("Websocket server started on port... %s", portNumber);
 
         //day 4 slide   9
-        try{
+        
 
-            InputStream is = s.getInputStream();
-            BufferedInputStream bis = new BufferedInputStream(is);
-            DataInputStream dis = new DataInputStream(bis);
-            String messageReceived = "";
+        ExecutorService thrPool = Executors.newFixedThreadPool(2);
+        CookieClientHandler handler = new CookieClientHandler(s,c);
+        thrPool.submit(handler);
+        // try{
 
-            try{
-                OutputStream os = s.getOutputStream();
-                BufferedOutputStream bos = new BufferedOutputStream(os);
-                DataOutputStream dos = new DataOutputStream(bos);
+        //     InputStream is = s.getInputStream();
+        //     BufferedInputStream bis = new BufferedInputStream(is);
+        //     DataInputStream dis = new DataInputStream(bis);
+        //     String messageReceived = "";
 
-                while (!messageReceived.toLowerCase().equals("quit")) {
-                    messageReceived = dis.readUTF(dis);
+        //     try{
+        //         OutputStream os = s.getOutputStream();
+        //         BufferedOutputStream bos = new BufferedOutputStream(os);
+        //         DataOutputStream dos = new DataOutputStream(bos);
 
-                    //pick a random cookie
-                    String retrieveCookie = c.getRandomCookie();
-                    dos.writeUTF(retrieveCookie);
-                    dos.flush();
+        //         while (!messageReceived.toLowerCase().equals("quit")) {
+        //             messageReceived = dis.readUTF(dis);
 
-                }
+        //             //pick a random cookie
+        //             String retrieveCookie = c.getRandomCookie();
+        //             dos.writeUTF(retrieveCookie);
+        //             dos.flush();
 
-                dos.close();
-                bos.close();
-                os.close();
+        //         }
 
-                dis.close();
-                bis.close();
-                is.close();
+        //         dos.close();
+        //         bos.close();
+        //         os.close();
 
-
-            } catch (Exception ex2) {
-
-            } finally {
-
-            }
-
-        } catch(Exception ex) {
+        //         dis.close();
+        //         bis.close();
+        //         is.close();
 
 
+        //     } catch (Exception ex2) {
 
-        } finally {
+        //     } finally {
 
-        }
+        //     }
+
+        // } catch(Exception ex) {
+
+
+
+        // } finally {
+
+        // }
+    
     }
 }
