@@ -38,7 +38,7 @@ public class Server {
         Socket s = ss.accept();
         System.out.printf("Websocket server started on port... %s", portNumber);
 
-        //day 4 slide  9
+        //day 4  slide  9
 
         ExecutorService thrPool = Executors.newFixedThreadPool(2);
         CookieClientHandler handler = new CookieClientHandler(s,c);
