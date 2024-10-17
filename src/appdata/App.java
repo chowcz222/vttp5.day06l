@@ -93,6 +93,17 @@ public class App {
             System.out.println(p.toString());
         });
 
+        MyInterface<Integer> addOperation = (a, b) -> {
+            return a+b;
+        };
+
+        MyInterface<Integer> multiplyOperation = (a, b) -> {
+            return a*b;
+        };
+
+        System.out.println("add Operations: " + addOperation.process(3, 2));
+        System.out.println("multiply Operations: " + multiplyOperation.process(3, 21));
+
 
     }
 }
