@@ -70,13 +70,13 @@ public class App {
         Date currentDate = Date.from(ld.atStartOfDay(ZoneId.systemDefault()).toInstant());
         List<Person> persons = new LinkedList<>();
         persons.add(new Person(1L, "Bernard", "Tan", 30000.0, currentDate));
-        persons.add(new Person(1L, "Chris", "Tan", 20000.0, currentDate));
-        persons.add(new Person(1L, "Dennis", "Wong", 15000.0, currentDate));
-        persons.add(new Person(1L, "Thomas", "Chia", 5000.0, currentDate));
-        persons.add(new Person(1L, "Rick", "Ng", 35000.0, currentDate));
-        persons.add(new Person(1L, "Micheal", "Choy", 12000.0, currentDate));
-        persons.add(new Person(1L, "Darren", "Loh", 32000.0, currentDate));
-        persons.add(new Person(1L, "May", "Tan", 20000.0, currentDate));
+        persons.add(new Person(2L, "Chris", "Tan", 20000.0, currentDate));
+        persons.add(new Person(3L, "Dennis", "Wong", 15000.0, currentDate));
+        persons.add(new Person(4L, "Thomas", "Chia", 5000.0, currentDate));
+        persons.add(new Person(5L, "Rick", "Ng", 35000.0, currentDate));
+        persons.add(new Person(6L, "Micheal", "Choy", 12000.0, currentDate));
+        persons.add(new Person(7L, "Darren", "Loh", 32000.0, currentDate));
+        persons.add(new Person(8L, "May", "Tan", 20000.0, currentDate));
 
         Comparator<Person> compare = Comparator.comparing(p -> p.getFirstName());
         persons.sort(compare);
